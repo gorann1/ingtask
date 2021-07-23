@@ -2,6 +2,28 @@ version: "3"
 services:
   db:
     image: postgres:11.1-alpine
+
+  redis:
+    image: 'redis:5-alpine'
+    command: redis-server
+    ports:
+      - '6380:6380'
+    volumes:
+      - 'redis:/data'
+
+  sidekiq:
+    depends_on:
+      - 'db'
+      - 'redis'
+    build: .
+    command: bundle exec sidekiq
+    volumes:
+      - '.:/ingtask'
+      - '/ingtask/tmp' # don't mount tmp directory
+    env_file:
+      - '.env'
+
+
   web:
     build: .
     command: bin/rails s -p 3000 -b '0.0.0.0'
@@ -11,3 +33,10 @@ services:
       - "3000:3000"
     depends_on:
       - db
+      - redis
+    environment:
+      - REDIS_URL_SIDEKIQ=redis://redis:6379/1
+
+
+volumes:
+  redis:
