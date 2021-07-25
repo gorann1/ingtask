@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_23_183534) do
 ActiveRecord::Schema.define(version: 2021_07_24_152449) do
 
   # These are extensions that must be enabled in order to support this database
@@ -42,5 +41,5 @@ ActiveRecord::Schema.define(version: 2021_07_24_152449) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-end
+
 end
