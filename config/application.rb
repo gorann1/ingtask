@@ -12,6 +12,7 @@ module Ingtask
     config.load_defaults 6.1
 
     config.active_job.queue_adapter = :sidekiq
+    config.application_name = 'IngTask'
 
     # Configuration for the application, engines, and railties goes here.
     #
