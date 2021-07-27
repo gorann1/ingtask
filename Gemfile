@@ -33,6 +33,7 @@ gem 'gravatar_image_tag'
 gem "mini_magick"
 gem 'sidekiq' # Simple, efficient background processing for Ruby
 gem 'simple_form'
+gem 'toastr-rails'
 gem 'trix-rails', '~> 2.3'
 
 
