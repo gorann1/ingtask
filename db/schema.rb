@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_26_180937) do
+ActiveRecord::Schema.define(version: 2021_07_28_091139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "jobs", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "url"
+    t.string "category"
+    t.string "location"
+    t.string "job_author"
+    t.string "author_email"
+    t.datetime "expire"
+    t.boolean "remote"
+    t.string "apply_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "avatar"
+  end
 
   create_table "tenants", force: :cascade do |t|
     t.string "name"
